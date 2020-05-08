@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>扫雷</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<div class="top">
+		<div class="top-left">
+			<span>难度选择</span>
+			<select class="top-select" id="Top-select">
+				<option value="easy">简单</option>
+			  <option value="medium">中等</option>
+			  <option value="diff">困难</option>
+			</select>
+		</div>
+		<div class="top-center"><span id="time"></span></div>
+		<div class="top-right">雷个数：<span id="num"></span></div>
+	</div>
+	<div class="contain">
+		<div class="main">
+			<div class="contain-main" id="contain-main"></div>
+			<div class="contain-bottom"><button id="begin">开始</button></div>
+		</div>
+	</div>
+
+	<script src="index.js"></script>
+</body>
+</html>
