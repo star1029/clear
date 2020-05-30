@@ -34,12 +34,18 @@ x_select.onchange = () => {
 	let val = x_select.options[x_select.selectedIndex].value;
 	if(val == 'easy'){ x_total = 36; x_num.innerHTML = 6; }
 		else if(val == 'medium'){ x_total = 81; x_num.innerHTML = 9; }
-					else { x_total = 144; x_num.innerHTML = 12; }
+			else { x_total = 144; x_num.innerHTML = 12; }
 	setNode(x_num.innerHTML);
 }
 
 x_begin.onclick = () => {
-	let timer = ()=>{
-		x_time.innerHTML = x_time.innerHTML + 1;
-	};
+	let timeBegin = setInterval(()=>{ 
+		if(x_time.innerHTML >= 999){
+			timeEnd();
+		}else{
+			x_time.innerHTML = Number(x_time.innerHTML) + 1 ;
+		}
+	},1000);
+
+	let timeEnd = ()=>{clearInterval( timeBegin )};
 };
