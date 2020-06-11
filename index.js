@@ -59,38 +59,49 @@ let setNode = (number)=> {
 				e.target.className = "contain_node flip";
 				//左上
 				if(index == 0){
+					console.log(1)
 					arr = [1, x_around_num, x_around_num+1];
-				};
+				}else
 				//右上
 				if(index == x_around_num - 1){
+					console.log(2)
 					arr = [index - 1, index - 1 + x_around_num, x_around_num*2 - 1];
-				};
+				}else
 				//左下
 				if(index == x_total - x_around_num){
+					console.log(3)
 					arr = [index - x_around_num, index - x_around_num + 1, x_total - x_around_num + 1];
-				};
+				}else
 				//右下
 				if(index == x_total - 1){
+					console.log(4)
 					arr = [index - 1 - x_around_num,index - x_around_num,index - 1];
-				};
+				}else
 				//上方
-				if(index > 0 && index < x_around_num){
+				if(index > 0 && index < x_around_num - 1){
+					console.log(5)
 					arr = [index - 1, index - 1 + x_around_num, index + x_around_num, 1 + index + x_around_num , 1 + index];
-				};
+				}else
 				//右方
-				if(index > x_around_num && index < x_total - 1 && (index + 1)%x_around_num == 0){
+				if(index > x_around_num - 1 && index < x_total - 1 && (index + 1)%x_around_num == 0){
+					console.log(6)
 					arr = [index - 1 - x_around_num, index - x_around_num, index - 1, index - 1 + x_around_num, index + x_around_num];
-				};
+				}else
 				//下方
 				if(index > x_total - x_around_num && index < x_total - 1){
+					console.log(7)
 					arr = [index - 1, index - 1 - x_around_num, index - x_around_num, index + 1 - x_around_num, index + 1];
-				};
+				}else
 				//左方
 				if(index > 0 && index < x_total - x_around_num && index%x_around_num == 0){
+					console.log(8)
 					arr = [index - x_around_num, index - x_around_num + 1, index + 1, index + x_around_num, index + x_around_num + 1];
-				};
+				}else
+				{
+					console.log(9);
+					arr = [index - 1 - x_around_num, index - x_around_num, index + 1 - x_around_num, index - 1, index + 1, index - 1 + x_around_num, index + x_around_num, index + 1 + x_around_num];
+				}
 				arr.forEach(item=>{
-					console.log(list[item])
 					if(list[item].classList.contains('ray_node')){
 						num++;
 					}else{
@@ -99,7 +110,7 @@ let setNode = (number)=> {
 				});
 				list[index].innerHTML = num == 0 ? '' : num;
 			}else{
-				console.log('失败了！');
+				window.alert('失败了！')
 			};
 		}
 	});
