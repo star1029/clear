@@ -11,8 +11,11 @@ html,body{height: 100%;}
 .contain{height: calc(100% - 100px); background-color: #CCC;}
 .main{position: relative; margin: 0 auto; width: 750px; height: 100%; border: 12px solid #FEFEFE; border-radius: 5px;}
 .contain-main{height: calc(100% - 80px); font-size: 0;}
-.contain_node{display: inline-block; background-color: #6495ED; border-radius: 5px; box-shadow: inset 0px 1px 5px rgba(0, 0, 0, .35); cursor: pointer;}
+.contain_node{display: inline-block; vertical-align: middle; text-align: center; font-size: 20px; background-color: #6495ED; border-radius: 5px; box-shadow: inset 0px 1px 5px rgba(0, 0, 0, .35); cursor: pointer;}
 .contain_node:hover{z-index: 99; box-shadow: inset 0px 0px 1px 5px rgba(0, 0, 0, .18); transition: 300ms all;}
+.contain_node.flip{background-color: #FFF; transition: 500ms all;}
+.contain_node.flip:hover{box-shadow: inset 0px 1px 5px rgba(0, 0, 0, .35);}
+
 /* 开始按钮 */
 .contain-bottom{height: 80px; padding-top: 30px; background-color: #FFF; text-align: center;}
 .contain-bottom button{padding: 5px 25px; transition: 500ms all; background-color: #FFF; color: #6495ED; border-radius: 5px; border: 1px solid #6495ED; outline: none; cursor: pointer;}
