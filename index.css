@@ -15,7 +15,7 @@ html,body{height: 100%;}
 .contain_node:hover{z-index: 99; box-shadow: inset 0px 0px 1px 5px rgba(0, 0, 0, .18); transition: 300ms all;}
 .contain_node.flip{background-color: #FFF; transition: 500ms all;}
 .contain_node.flip:hover{box-shadow: inset 0px 1px 5px rgba(0, 0, 0, .35);}
-.contain_node.fail{background: url(ray.png); background-size: 100% 100%;}
+.contain_node.fail{background: url(rayImg.png); background-size: 100% 100%;}
 
 /* 开始按钮 */
 .contain-bottom{height: 80px; padding-top: 30px; background-color: #FFF; text-align: center;}
