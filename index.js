@@ -47,75 +47,75 @@ let setNode = (number)=> {
 		x_node.style.lineHeight = node_height;
 		x_node.dataset.index = i;
 		x_main.appendChild(x_node);
-	};
-	// 点击事件
-	x_main.addEventListener('click', e=>{
-		if(e.target.nodeName.toLowerCase() === 'span'){
-			if(!e.target.classList.contains('ray_node')){
-				let index = Number(e.target.dataset.index),
-						list = x_main.getElementsByTagName("span"),
-						arr = [],
-						num = 0;
-				e.target.className = "contain_node flip";
-				//左上
-				if(index == 0){
-					console.log(1)
-					arr = [1, x_around_num, x_around_num+1];
-				}else
-				//右上
-				if(index == x_around_num - 1){
-					console.log(2)
-					arr = [index - 1, index - 1 + x_around_num, x_around_num*2 - 1];
-				}else
-				//左下
-				if(index == x_total - x_around_num){
-					console.log(3)
-					arr = [index - x_around_num, index - x_around_num + 1, x_total - x_around_num + 1];
-				}else
-				//右下
-				if(index == x_total - 1){
-					console.log(4)
-					arr = [index - 1 - x_around_num,index - x_around_num,index - 1];
-				}else
-				//上方
-				if(index > 0 && index < x_around_num - 1){
-					console.log(5)
-					arr = [index - 1, index - 1 + x_around_num, index + x_around_num, 1 + index + x_around_num , 1 + index];
-				}else
-				//右方
-				if(index > x_around_num - 1 && index < x_total - 1 && (index + 1)%x_around_num == 0){
-					console.log(6)
-					arr = [index - 1 - x_around_num, index - x_around_num, index - 1, index - 1 + x_around_num, index + x_around_num];
-				}else
-				//下方
-				if(index > x_total - x_around_num && index < x_total - 1){
-					console.log(7)
-					arr = [index - 1, index - 1 - x_around_num, index - x_around_num, index + 1 - x_around_num, index + 1];
-				}else
-				//左方
-				if(index > 0 && index < x_total - x_around_num && index%x_around_num == 0){
-					console.log(8)
-					arr = [index - x_around_num, index - x_around_num + 1, index + 1, index + x_around_num, index + x_around_num + 1];
-				}else
-				{
-					console.log(9);
-					arr = [index - 1 - x_around_num, index - x_around_num, index + 1 - x_around_num, index - 1, index + 1, index - 1 + x_around_num, index + x_around_num, index + 1 + x_around_num];
-				}
-				arr.forEach(item=>{
-					if(list[item].classList.contains('ray_node')){
-						num++;
-					}else{
-						list[item].className = "contain_node flip";
-					}
-				});
-				list[index].innerHTML = num == 0 ? '' : num;
-			}else{
-				window.alert('失败了！')
-			};
-		}
-	});
-	
+	};	
 };
+// 点击事件
+x_main.addEventListener('click', e=>{
+	if(e.target.nodeName.toLowerCase() === 'span'){
+		if(!e.target.classList.contains('ray_node')){
+			let index = Number(e.target.dataset.index),
+					list = x_main.getElementsByTagName("span"),
+					arr = [],
+					num = 0;
+			e.target.className = "contain_node flip";
+			//左上
+			if(index == 0){
+				arr = [1, x_around_num, x_around_num+1];
+			}else
+			//右上
+			if(index == x_around_num - 1){
+				arr = [index - 1, index - 1 + x_around_num, x_around_num*2 - 1];
+			}else
+			//左下
+			if(index == x_total - x_around_num){
+				arr = [index - x_around_num, index - x_around_num + 1, x_total - x_around_num + 1];
+			}else
+			//右下
+			if(index == x_total - 1){
+				arr = [index - 1 - x_around_num,index - x_around_num,index - 1];
+			}else
+			//上方
+			if(index > 0 && index < x_around_num - 1){
+				arr = [index - 1, index - 1 + x_around_num, index + x_around_num, 1 + index + x_around_num , 1 + index];
+			}else
+			//右方
+			if(index > x_around_num - 1 && index < x_total - 1 && (index + 1)%x_around_num == 0){
+				arr = [index - 1 - x_around_num, index - x_around_num, index - 1, index - 1 + x_around_num, index + x_around_num];
+			}else
+			//下方
+			if(index > x_total - x_around_num && index < x_total - 1){
+				arr = [index - 1, index - 1 - x_around_num, index - x_around_num, index + 1 - x_around_num, index + 1];
+			}else
+			//左方
+			if(index > 0 && index < x_total - x_around_num && index%x_around_num == 0){
+				arr = [index - x_around_num, index - x_around_num + 1, index + 1, index + x_around_num, index + x_around_num + 1];
+			}else
+			{
+				arr = [index - 1 - x_around_num, index - x_around_num, index + 1 - x_around_num, index - 1, index + 1, index - 1 + x_around_num, index + x_around_num, index + 1 + x_around_num];
+			}
+			arr.forEach(item=>{
+				if(list[item].classList.contains('ray_node')){
+					num++;
+				}else{
+					list[item].className = "contain_node flip";
+				}
+			});
+			list[index].innerHTML = num == 0 ? '' : num;
+			setTimeout(()=>{
+				if(x_main.getElementsByClassName("flip").length == x_total - x_num.innerHTML){
+					window.alert('恭喜你通过啦！');
+					x_begin.click();
+				};
+			},500)
+		}else{
+			e.target.className = "contain_node ray_node fail";
+			setTimeout(()=>{
+				window.alert('失败了！');
+				x_begin.click();
+			},500)
+		};
+	}
+});
 // 初始渲染
 setNode(x_num.innerHTML);
 // 切换扫雷难度
@@ -145,6 +145,7 @@ x_begin.onclick = () => {
 		timeEnd();
 		x_time.innerHTML = 0;
 		x_select.removeAttribute("disabled");
+		setNode(x_num.innerHTML);
 	}else{
 		x_begin.className = "begin";
 		x_shade.className = "contain-shade hide";
